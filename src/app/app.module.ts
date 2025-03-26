@@ -1,10 +1,12 @@
-import { NgModule } from '@angular/core';
+import { NgModule, provideZoneChangeDetection } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
 import { GraphQLModule } from './graphql.module';
+import { provideClientHydration } from '@angular/platform-browser';
+import { provideHttpClient } from '@angular/common/http';
+import { graphqlProvider } from './graphql.provider';
 
 @NgModule({
   declarations: [
@@ -13,10 +15,13 @@ import { GraphQLModule } from './graphql.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
     GraphQLModule
   ],
-  providers: [],
+  providers: [
+    provideZoneChangeDetection({ eventCoalescing: true }),
+    provideClientHydration(),
+    provideHttpClient(),
+    graphqlProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

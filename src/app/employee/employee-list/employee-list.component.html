@@ -1,0 +1,25 @@
+<button>TODO ADD CREATE NEW EMPLOYEE</button>   
+
+<table>
+    <thead>
+
+    </thead>
+    <tbody>
+        <tr>
+            <td> First Name</td>
+            <td> Last Name </td>
+            <td> ID </td>
+            <td> Actions </td>
+        </tr>
+            @for (employee of empList; track $index) {
+                <tr>
+                    <td>{{ employee.employee_first_name }}</td>
+                    <td>{{ employee.employee_last_name }}</td>
+                    <td>{{ employee.employee_id }}</td>
+                    <button>TODO ADD EDIT</button>                    
+                    <button>TODO ADD DELETE</button>                    
+                    <button>TODO ADD VIEW</button>
+                </tr>
+            }
+    </tbody>
+</table>
