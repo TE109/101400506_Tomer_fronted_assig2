@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import { GET_ALL_EMPLOYEES } from '../../graphql/graphql.queries';
-import {RouterOutlet, RouterLink} from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-employee-list',
-  imports: [CommonModule],
+  imports: [RouterLink, RouterOutlet,CommonModule],
   templateUrl: './employee-list.component.html',
   styleUrls: ['./employee-list.component.css'],
 
