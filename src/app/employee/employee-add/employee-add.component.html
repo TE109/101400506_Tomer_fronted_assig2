@@ -1,1 +1,76 @@
-<p>employee-add works!</p>
+<div class="container">
+  <h2 class="heading">Add Employee</h2>
+  <form [formGroup]="createForm" (ngSubmit)="submitForm()">
+
+    <div class="form-group">
+      <label for="first_name">First Name</label>
+      <input type="text" class="form-control" id="first_name" formControlName="first_name">
+      <div *ngIf="createForm?.get('first_name')?.invalid && createForm?.get('first_name')?.touched" class="text-danger">
+        First name is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="last_name">Last Name</label>
+      <input type="text" class="form-control" id="last_name" formControlName="last_name">
+      <div *ngIf="createForm?.get('last_name')?.invalid && createForm?.get('last_name')?.touched" class="text-danger">
+        Last name is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" class="form-control" id="email" formControlName="email">
+      <div *ngIf="createForm?.get('email')?.invalid && createForm?.get('email')?.touched" class="text-danger">
+        Please enter a valid email.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="gender">Gender</label>
+      <select class="form-control" id="gender" formControlName="gender">
+        <option value="" disabled>Select Gender</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+      <div *ngIf="createForm?.get('gender')?.invalid && createForm?.get('gender')?.touched" class="text-danger">
+        Please select a gender.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="designation">Designation</label>
+      <input type="text" class="form-control" id="designation" formControlName="designation">
+      <div *ngIf="createForm?.get('designation')?.invalid && createForm?.get('designation')?.touched" class="text-danger">
+        Designation is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="salary">Salary</label>
+      <input type="number" class="form-control" id="salary" formControlName="salary">
+      <div *ngIf="createForm?.get('salary')?.invalid && createForm?.get('salary')?.touched" class="text-danger">
+        Salary is required and must be at least 1000.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="date_of_joining">Date of Joining</label>
+      <input type="date" class="form-control" id="date_of_joining" formControlName="date_of_joining">
+      <div *ngIf="createForm?.get('date_of_joining')?.invalid && createForm?.get('date_of_joining')?.touched" class="text-danger">
+        Date of joining is required.
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <label for="department">Department</label>
+      <input type="text" class="form-control" id="department" formControlName="department">
+      <div *ngIf="createForm?.get('department')?.invalid && createForm?.get('department')?.touched" class="text-danger">
+        Department is required.
+      </div>
+    </div>
+
+    <button type="submit">Submit</button>
+  </form>
+</div>

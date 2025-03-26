@@ -9,6 +9,7 @@ import { provideHttpClient } from '@angular/common/http';
 import { graphqlProvider } from './graphql.provider';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { CommonModule } from '@angular/common';
     AppRoutingModule,
     GraphQLModule,
     RouterModule,
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
