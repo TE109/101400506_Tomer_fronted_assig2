@@ -7,6 +7,8 @@ import { GraphQLModule } from './graphql.module';
 import { provideClientHydration } from '@angular/platform-browser';
 import { provideHttpClient } from '@angular/common/http';
 import { graphqlProvider } from './graphql.provider';
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { graphqlProvider } from './graphql.provider';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    GraphQLModule
+    GraphQLModule,
+    RouterModule,
+    CommonModule
   ],
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
