@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import { GET_EMPLOYEE_BY_ID } from '../../graphql/graphql.queries';
 import { ActivatedRoute } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-employee-view',
-  standalone: false,
+  imports: [RouterLink, RouterOutlet,],
   templateUrl: './employee-view.component.html',
   styleUrls: ['./employee-view.component.css']
 })
