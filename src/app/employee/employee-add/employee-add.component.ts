@@ -3,11 +3,12 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgIf } from '@angular/common';
 import { Apollo } from 'apollo-angular';
 import { ADD_EMPLOYEE } from '../../graphql/graphql.queries';
+import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-employee-add',
   standalone: true,
-  imports: [NgIf, ReactiveFormsModule],
+  imports: [NgIf,RouterLink, RouterOutlet, ReactiveFormsModule],
   templateUrl: './employee-add.component.html',
   styleUrl: './employee-add.component.css'
 })
@@ -35,6 +36,7 @@ export class EmployeeAddComponent {
 
   submitForm(): void {
     if (this.createForm?.valid) {
+      alert("a")
       const formValues = this.createForm.value;
 
       this.apollo.mutate({
@@ -49,6 +51,13 @@ export class EmployeeAddComponent {
           date_of_joining: formValues.date_of_joining,
           employee_photo: formValues.employee_photo,
           department: formValues.department
+        }
+      }).subscribe({
+        next: ({ data }: any) => {
+          console.log('Sucsefully created employee:', data);
+        },
+        error: (error) => {
+          console.log('Error fetching employee:', error);
         }
       });
     }

@@ -5,9 +5,9 @@
 <p><strong>Gender:</strong> {{ employee.gender }}</p>
 <p><strong>Designation:</strong> {{ employee.designation }}</p>
 <p><strong>Salary:</strong> ${{ employee.salary }}</p>
-<p><strong>Date of Joining:</strong> {{ employee.date_of_joining }}</p>
+<p><strong>Date of Joining:</strong> {{ employee.date_of_joining | date}}</p>
 <p><strong>Department:</strong> {{ employee.department }}</p>
-<p><strong>Created At:</strong> {{ employee.created_at }}</p>
-<p><strong>Updated At:</strong> {{ employee.updated_at }}</p>   
+<p><strong>Created At:</strong> {{ employee.created_at | date }}</p>
+<p><strong>Updated At:</strong> {{ employee.updated_at | date}}</p>   
 
 <button><a routerLink="/emList">Go to List</a></button>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Apollo } from 'apollo-angular';
-import { GET_ALL_EMPLOYEES } from '../../graphql/graphql.queries';
+import { DELETE_EMPLOYEE, GET_ALL_EMPLOYEES } from '../../graphql/graphql.queries';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -34,6 +34,18 @@ export class EmployeeListComponent implements OnInit {
         employee_last_name: emp.last_name,
         employee_id: emp._id
       }));
+    });
+  }
+  
+  deleteEmployee(id: any): void {
+    alert(id)
+    this.apollo.mutate({
+      mutation: DELETE_EMPLOYEE,
+      variables: { id }
+    }).subscribe({
+      next: ({ data }: any) => {
+        this.empList = this.empList.filter(employee => employee.employee_id !== id);
+      }
     });
   }
 }
