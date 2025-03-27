@@ -16,7 +16,7 @@ export class EmployeeAddComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private apollo: Apollo  // Apollo Client injected
+    private apollo: Apollo 
   ) {}
 
   ngOnInit(): void {
@@ -49,13 +49,6 @@ export class EmployeeAddComponent {
           date_of_joining: formValues.date_of_joining,
           employee_photo: formValues.employee_photo,
           department: formValues.department
-        }
-      }).subscribe({
-        next: (result) => {
-          console.log('Employee added successfully:', result);
-        },
-        error: (error) => {
-          console.error('Error adding employee:', error);
         }
       });
     }

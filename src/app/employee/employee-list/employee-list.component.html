@@ -17,7 +17,10 @@
             <td>
                 <button>TODO ADD EDIT</button>                    
                 <button>TODO ADD DELETE</button>                    
-                <button>TODO ADD DETAILS VIEW</button>
+                <button>
+                    <a [routerLink]="['/emView', employee.employee_id]">View Details</a>
+                  </button>
+                  
             </td>
         </tr>
     </tbody>
