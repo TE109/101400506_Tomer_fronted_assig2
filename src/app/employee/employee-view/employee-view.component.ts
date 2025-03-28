@@ -22,7 +22,6 @@ export class EmployeeViewComponent implements OnInit {
   }
 
   fetchEmployee(id: any): void {
-    alert("test")
     this.apollo.query({
       query: GET_EMPLOYEE_BY_ID,
       variables: { id }

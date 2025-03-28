@@ -15,12 +15,11 @@
             <td>{{ employee.employee_last_name }}</td>
             <td>{{ employee.employee_id }}</td>
             <td>
-                <button>TODO ADD EDIT</button>                    
-                <button (click)="deleteEmployee(employee.employee_id)">Delete</button>                    
+                <button><a [routerLink]="['/emEdit', employee.employee_id]">Edit Details</a></button>
+                <button (click)="deleteEmployee(employee.employee_id)">Delete</button>
                 <button>
                     <a [routerLink]="['/emView', employee.employee_id]">View Details</a>
-                  </button>
-                  
+                </button>
             </td>
         </tr>
     </tbody>
