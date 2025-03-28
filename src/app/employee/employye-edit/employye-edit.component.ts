@@ -4,6 +4,7 @@ import { Apollo } from 'apollo-angular';
 import { UPDATE_EMPLOYEE,GET_EMPLOYEE_BY_ID } from '../../graphql/graphql.queries';
 import { ActivatedRoute, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../auth.service';
 
 @Component({
   selector: 'app-employye-edit',
@@ -21,8 +22,13 @@ export class EmployyeEditComponent {
     private formBuilder: FormBuilder,
     private activateRoute: ActivatedRoute,
     private router:Router,
-    private apollo: Apollo 
+    private apollo: Apollo, 
+    private auth: AuthService
   ) {}
+
+  logout(): void {
+    this.auth.clearSessionToken()
+  }
 
   ngOnInit(): void {
     this.id = this.activateRoute.snapshot.paramMap.get('id');

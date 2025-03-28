@@ -3,6 +3,7 @@ import { Apollo } from 'apollo-angular';
 import { DELETE_EMPLOYEE, GET_ALL_EMPLOYEES } from '../../graphql/graphql.queries';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../auth.service';
 
 @Component({
   selector: 'app-employee-list',
@@ -14,7 +15,11 @@ import { CommonModule } from '@angular/common';
 export class EmployeeListComponent implements OnInit {
   empList: any[] = [];
 
-  constructor(private apollo: Apollo) { }
+  constructor(private apollo: Apollo, private auth: AuthService) { }
+
+  logout(): void {
+    this.auth.clearSessionToken()
+  }
 
   ngOnInit(): void {
     this.fetchEmployees();  

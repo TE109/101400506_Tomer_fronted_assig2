@@ -1,1 +1,23 @@
-<p>sign-up works!</p>
+<div class="container">
+    <button><a routerLink="/signUp">Go to Sign up Page</a></button>
+    <h2 class="heading">Sign Up</h2>
+    <form [formGroup]="signForm" (ngSubmit)="submitForm()">
+
+        <div class="form-group">
+            <label for="username">username</label>
+            <input type="text" class="form-control" id="username" formControlName="username">
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" formControlName="email">
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" formControlName="password">
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+</div>

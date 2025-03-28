@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Apollo } from 'apollo-angular';
-import { ADD_EMPLOYEE, LOGIN_USER } from '../../graphql/graphql.queries';
+import { LOGIN_USER } from '../../graphql/graphql.queries';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { AuthService } from '../../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -13,11 +14,14 @@ import { Router, RouterLink, RouterOutlet } from '@angular/router';
 })
 export class LoginComponent {
   loginForm: any;
+  username: string = '';
+  password: string = '';
 
   constructor(
     private formBuilder: FormBuilder,
     private apollo: Apollo,
-    private router: Router 
+    private router: Router,
+    private authService: AuthService 
   ) {}
 
   ngOnInit(): void {
@@ -28,6 +32,9 @@ export class LoginComponent {
   }
 
   submitForm(): void {
+    if(this.authService.isAuthenticated() == true){
+      this.router.navigate(['/emList'])
+    }
     if (this.loginForm?.valid) {
       const formValues = this.loginForm.value;
       this.apollo.query({
@@ -38,11 +45,13 @@ export class LoginComponent {
         }
       }).subscribe({
         next: ({ data }: any) => {
-          console.log('Sucsefully created employee:', data);
+          console.log('Sucsefully login:', data);
+          const Token = data.username + '-session-token';  
+          this.authService.saveSessionToken(Token);
           this.router.navigate(['/emList'])
         },
         error: (error) => {
-          console.log('Error fetching employee:', error);
+          console.log('Error login:', error);
         }
       });
     }

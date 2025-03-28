@@ -4,6 +4,7 @@ import { GET_EMPLOYEE_BY_ID } from '../../graphql/graphql.queries';
 import { ActivatedRoute } from '@angular/router';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../auth.service';
 
 @Component({
   selector: 'app-employee-view',
@@ -14,7 +15,11 @@ import { CommonModule } from '@angular/common';
 export class EmployeeViewComponent implements OnInit {
   employee: any;
 
-  constructor(private route: ActivatedRoute, private apollo: Apollo) {}
+  constructor(private route: ActivatedRoute, private apollo: Apollo, private auth: AuthService) {}
+
+  logout(): void {
+    this.auth.clearSessionToken()
+  }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');

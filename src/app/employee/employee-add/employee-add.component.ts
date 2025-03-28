@@ -3,6 +3,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Apollo } from 'apollo-angular';
 import { ADD_EMPLOYEE } from '../../graphql/graphql.queries';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { AuthService } from '../../auth.service';
 
 @Component({
   selector: 'app-employee-add',
@@ -17,7 +18,8 @@ export class EmployeeAddComponent {
   constructor(
     private formBuilder: FormBuilder,
     private apollo: Apollo,
-    private router: Router 
+    private router: Router,
+    private auth: AuthService 
   ) {}
 
   ngOnInit(): void {
@@ -32,6 +34,10 @@ export class EmployeeAddComponent {
       employee_photo: [''],
       department: ['', Validators.required]
     });
+  }
+
+  logout(): void {
+    this.auth.clearSessionToken()
   }
 
   submitForm(): void {
