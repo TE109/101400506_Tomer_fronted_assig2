@@ -6,6 +6,7 @@ import { EmployeeAddComponent } from './employee/employee-add/employee-add.compo
 import { EmployeeViewComponent } from './employee/employee-view/employee-view.component';
 import { EmployyeEditComponent } from './employee/employye-edit/employye-edit.component';
 import { LoginComponent } from './user/login/login.component';
+import { SignUpComponent } from './user/sign-up/sign-up.component';
 
 const routes: Routes = [{
   path:"emList", component: EmployeeListComponent
@@ -19,6 +20,8 @@ const routes: Routes = [{
   path:"emEdit/:id", component: EmployyeEditComponent
 },{
   path: "", component: LoginComponent
+},{
+  path: "signUp", component: SignUpComponent
 }];
 
 @NgModule({
