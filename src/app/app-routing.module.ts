@@ -5,6 +5,7 @@ import { EmployeeListComponent } from './employee/employee-list/employee-list.co
 import { EmployeeAddComponent } from './employee/employee-add/employee-add.component';
 import { EmployeeViewComponent } from './employee/employee-view/employee-view.component';
 import { EmployyeEditComponent } from './employee/employye-edit/employye-edit.component';
+import { LoginComponent } from './user/login/login.component';
 
 const routes: Routes = [{
   path:"emList", component: EmployeeListComponent
@@ -16,7 +17,9 @@ const routes: Routes = [{
 },
 {
   path:"emEdit/:id", component: EmployyeEditComponent
-},];
+},{
+  path: "", component: LoginComponent
+}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

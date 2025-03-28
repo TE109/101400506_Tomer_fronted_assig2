@@ -70,7 +70,7 @@ const SIGNUP_USER = gql`
 `;
 
 const LOGIN_USER = gql`
-  mutation Login($email: String!, $password: String!) {
+  query Login($email: String!, $password: String!) {
     login(email: $email, password: $password) {
       _id
       username
